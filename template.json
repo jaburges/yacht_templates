@@ -85,5 +85,54 @@
         "bind": "!localtime"
       }
     ]
-  }  
+  },
+  {
+    "type": 1,
+    "title": "Frigate",
+    "name": "Frigate",
+    "description": "Fully configurable Zwave to MQTT Gateway and Control Panel.",
+    "logo": "https://raw.githubusercontent.com/selfhosters/unRAID-CA-templates/master/templates/img/zwavejs2mqtt.png",
+    "image": "zwavejs/zwavejs2mqtt:latest",
+    "network_mode": "bridge",
+    "restart_policy": "unless-stopped",
+    "categories": [
+      "Home Automation"
+    ],
+    "platform": "linux",
+    "ports": [
+      {
+      "WebUI": "5000:5000/tcp"
+      },
+      {
+      "1935:1935/tcp"
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "bind": "!config/frigate/"
+      },
+      {
+        "container": "/etc/localtime",
+        "bind": "!localtime"
+      },
+      {
+        "container": "/media/frigate/clips",
+        "bind": "!media/frigate/clips"
+      },
+      {
+        "container": "/media/frigate/recordings",
+        "bind": "!media/frigate/recordings"
+      },
+      {
+        "container": "/tmp/cache",
+        "bind": "!cache/frigate"
+      }     
+    ]
+    "env" : [
+      {
+      "FRIGATE_RTSP_PASSWORD": "!password"
+      }
+    ]
+  }
   ]
