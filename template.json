@@ -88,11 +88,69 @@
   },
   {
     "type": 1,
+    "title": "NGINXproxyManager",
+    "name": "NGINXproxyManager",
+    "description": "Nginx Proxy Manager enables you to easily forward to your websites running at home or otherwise, including free SSL, without having to know too much about Nginx or Letsencrypt",
+    "logo": "https://raw.githubusercontent.com/jlesage/docker-templates/master/jlesage/images/nginx-proxy-manager-icon.png",
+    "image": "jlesage/nginx-proxy-manager",
+    "network_mode": "bridge",
+    "restart_policy": "unless-stopped",
+    "categories": [
+      "Security"
+    ],
+    "platform": "linux",
+    "ports": [
+      {
+      "WebUI": "8181:8181/tcp",
+      "http": "80:18880/tcp",
+      "https": "443:18443/tcp"
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "bind": "!config/NGINXproxymanager/"
+      },
+      {
+        "container": "/etc/localtime",
+        "bind": "!localtime"
+      }
+    ],
+    "env": [
+      {
+        "name": "USER_ID",
+        "label": "USER_ID",
+        "default": "!PUID"
+      },
+      {
+        "name": "GROUP_ID",
+        "label": "GROUP_ID",
+        "default": "!GUID"
+      },      
+      {
+        "name": "UMASK",
+        "label": "UMASK",
+        "default": "0"
+      },          
+      {
+        "name": "APP_NICENESS",
+        "label": "APP_NICENESS",
+        "default": ""
+      },  
+      {
+        "name": "DISABLE_IPV6",
+        "label": "DISABLE_IPV6",
+        "default": "0"
+      }  
+     ]
+  },
+  {
+    "type": 1,
     "title": "Frigate",
     "name": "Frigate",
-    "description": "Fully configurable Zwave to MQTT Gateway and Control Panel.",
-    "logo": "https://raw.githubusercontent.com/selfhosters/unRAID-CA-templates/master/templates/img/zwavejs2mqtt.png",
-    "image": "zwavejs/zwavejs2mqtt:latest",
+    "description": "Fully configurable NVR with object vision",
+    "logo": "https://raw.githubusercontent.com/yayitazale/unraid-templates/main/frigate_unraid.PNG",
+    "image": "blakeblackshear/frigate:stable",
     "network_mode": "bridge",
     "restart_policy": "unless-stopped",
     "categories": [
@@ -101,10 +159,8 @@
     "platform": "linux",
     "ports": [
       {
-      "WebUI": "5000:5000/tcp"
-      },
-      {
-      "1935:1935/tcp"
+      "WebUI": "5000:5000/tcp",
+      "communication": "1935:1935/tcp"
       }
     ],
     "volumes": [
@@ -128,10 +184,69 @@
         "container": "/tmp/cache",
         "bind": "!cache/frigate"
       }     
-    ]
+    ],
     "env" : [
       {
       "FRIGATE_RTSP_PASSWORD": "!password"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "title": "FrigateNvidia",
+    "name": "FrigateNvidia",
+    "description": "Fully configurable NVR with object vision with Nvidia",
+    "logo": "https://raw.githubusercontent.com/yayitazale/unraid-templates/main/frigate_unraid.PNG",
+    "image": "blakeblackshear/frigate:stable-amd64nvidia",
+    "network_mode": "bridge",
+    "restart_policy": "unless-stopped",
+    "categories": [
+      "Home Automation"
+    ],
+    "platform": "linux",
+    "ports": [
+      {
+      "WebUI": "5000:5000/tcp",
+      "communication": "1935:1935/tcp"
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "bind": "!config/frigate/"
+      },
+      {
+        "container": "/etc/localtime",
+        "bind": "!localtime"
+      },
+      {
+        "container": "/media/frigate/clips",
+        "bind": "!media/frigate/clips"
+      },
+      {
+        "container": "/media/frigate/recordings",
+        "bind": "!media/frigate/recordings"
+      },
+      {
+        "container": "/tmp/cache",
+        "bind": "!cache/frigate"
+      }     
+    ],
+    "env" : [
+      {
+      "name": "FRIGATE_RTSP_PASSWORD",
+      "label": "FRIGATE_RTSP_PASSWORD",
+      "default": "password"
+      },
+      {
+      "name": "NVIDIA_VISIBLE_DEVICES",
+      "label": "NVIDIA_VISIBLE_DEVICES",
+      "default": "all"    
+      },
+      {
+      "name": "NVIDIA_DRIVER_CAPABILITIES",
+      "label": "NVIDIA_DRIVER_CAPABILITIES",
+      "default": "all"            
       }
     ]
   }
