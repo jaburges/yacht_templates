@@ -31,7 +31,7 @@
   {
     "type": 1,
     "title": "NodeRed",
-    "name": "Node-Red Container",
+    "name": "Node-Red",
     "description": "Node-RED is a visual tool for wiring the Internet of Things. Node-RED is a tool for wiring together hardware devices, APIs and online services in new and interesting ways.See NodeRed.org and flows.nodered.org for more info.",
     "logo": "https://nodered.org/about/resources/media/node-red-icon.png",
     "image": "nodered/node-red",
