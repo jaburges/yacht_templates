@@ -102,8 +102,8 @@
     "ports": [
       {
       "WebUI": "8181:8181/tcp",
-      "http": "80:18880/tcp",
-      "https": "443:18443/tcp"
+      "http": "18880:80/tcp",
+      "https": "18443:443/tcp"
       }
     ],
     "volumes": [
