@@ -3,7 +3,7 @@
     "type": 1,
     "title": "HomeAssistant",
     "name": "Home Assistant Container",
-    "description": "Open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts. Perfect to run on a Raspberry Pi or a local server..",
+    "description": "Open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts. Perfect to run on a Raspberry Pi or a local server.",
     "logo": "https://github.com/home-assistant/brands/blob/master/core_integrations/_homeassistant/icon.png",
     "image": "homeassistant/home-assistant:stable",
     "network_mode": "host",
@@ -28,5 +28,65 @@
         "bind": "!localtime"
       }
     ]
-  }
+  },
+  {
+    "type": 1,
+    "title": "NodeRed",
+    "name": "Node-Red Container",
+    "description": "Node-RED is a visual tool for wiring the Internet of Things. Node-RED is a tool for wiring together hardware devices, APIs and online services in new and interesting ways.See NodeRed.org and flows.nodered.org for more info.",
+    "logo": "https://nodered.org/about/resources/media/node-red-icon.png",
+    "image": "nodered/node-red",
+    "network_mode": "bridge",
+    "restart_policy": "unless-stopped",
+    "categories": [
+      "Home Automation"
+    ],
+    "platform": "linux",
+    "restart_policy": "unless-stopped",
+    "ports": [
+      {
+      "WebUI": "1880:1880/tcp"
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "bind": "!config/NodeRed/"
+      },
+      {
+        "container": "/etc/localtime",
+        "bind": "!localtime"
+      }
+    ]
+  },  
+  {
+    "type": 1,
+    "title": "Zwavejs2MQTT",
+    "name": "ZwaveJS 2 MQTT",
+    "description": "Fully configurable Zwave to MQTT Gateway and Control Panel.",
+    "logo": "https://raw.githubusercontent.com/selfhosters/unRAID-CA-templates/master/templates/img/zwavejs2mqtt.png",
+    "image": "zwavejs/zwavejs2mqtt:latest",
+    "network_mode": "bridge",
+    "restart_policy": "unless-stopped",
+    "categories": [
+      "Home Automation"
+    ],
+    "platform": "linux",
+    "restart_policy": "unless-stopped",
+    "ports": [
+      {
+      "WebUI": "8091:8091/tcp"
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "bind": "!config/zwavejs2mqtt/"
+      },
+      {
+        "container": "/etc/localtime",
+        "bind": "!localtime"
+      }
+    ]
+  },    
   ]
