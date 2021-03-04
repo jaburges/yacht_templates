@@ -4,7 +4,7 @@
     "title": "HomeAssistant",
     "name": "HomeAssistant",
     "description": "Open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts. Perfect to run on a Raspberry Pi or a local server.",
-    "logo": "https://en.wikipedia.org/wiki/Home_Assistant#/media/File:Home_Assistant_Logo.svg",
+    "logo": "https://github.com/home-assistant/brands/raw/master/core_integrations/_homeassistant/icon.png",
     "image": "homeassistant/home-assistant:stable",
     "network_mode": "host",
     "restart_policy": "unless-stopped",
