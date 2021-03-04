@@ -125,7 +125,7 @@
       {
         "name": "GROUP_ID",
         "label": "GROUP_ID",
-        "default": "!GUID"
+        "default": "!PGID"
       },      
       {
         "name": "UMASK",
