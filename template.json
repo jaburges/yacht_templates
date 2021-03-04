@@ -48,7 +48,7 @@
     ],
     "volumes": [
       {
-        "container": "/config",
+        "container": "/data",
         "bind": "!config/NodeRed/"
       },
       {
