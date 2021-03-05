@@ -249,5 +249,109 @@
       "default": "all"            
       }
     ]
+  },
+  {
+    "type": 1,
+    "title": "NGINXProxyManager-JC",
+    "name": "NGINXProxyManager",
+    "description": "JC NGINX Proxy Manager, needs mariadb/mysql",
+    "logo": "https://raw.githubusercontent.com/jlesage/docker-templates/master/jlesage/images/nginx-proxy-manager-icon.png",
+    "image": "jc21/nginx-proxy-manager:latest",
+    "network_mode": "bridge",
+    "restart_policy": "unless-stopped",
+    "categories": [
+      "Database"
+    ],
+    "platform": "linux",
+    "ports": [
+      {
+      "WebUI": "81:81/tcp",
+      "http": "80:80/tcp",
+      "https": "443:443/tcp"
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "bind": "!config/NGINXproxymanager/data"
+      },
+      {
+        "container": "/etc/letsencrypt",
+        "bind": "!config/NGINXProxymanager/letsencrypt"
+      },  
+      {
+        "container": "/app/config/production.json",
+        "bind": "!config/NGINXProxymanager/config.json"
+      }      
+    ],
+    "env" : [
+      {
+      "name": "MYSQL_ROOT_PASSWORD",
+      "label": "MYSQL_ROOT_PASSWORD",
+      "default": "password"
+      },
+      {
+      "name": "MYSQL_DATABASE",
+      "label": "MYSQL_DATABASE",
+      "default": "npm"    
+      },
+      {
+      "name": "MYSQL_USER",
+      "label": "MYSQL_USER",
+      "default": "homeserver"            
+      },
+      {
+      "name": "MYSQL_PASSWORD",
+      "label": "MYSQL_PASSWORD",
+      "default": "npm"            
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "title": "MySQL",
+    "name": "MySQL",
+    "description": "Mariadb",
+    "logo": "https://download.logo.wine/logo/MySQL/MySQL-Logo.wine.png",
+    "image": "yobasystems/alpine-mariadb:latest",
+    "network_mode": "bridge",
+    "restart_policy": "unless-stopped",
+    "categories": [
+      "Database"
+    ],
+    "platform": "linux",
+    "ports": [
+      {
+      "communication": "3306:3306/tcp"
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/var/lib/mysql",
+        "bind": "!config/mysql/"
+      }    
+    ],
+    "env" : [
+      {
+      "name": "MYSQL_ROOT_PASSWORD",
+      "label": "MYSQL_ROOT_PASSWORD",
+      "default": "password"
+      },
+      {
+      "name": "MYSQL_DATABASE",
+      "label": "MYSQL_DATABASE",
+      "default": "npm"    
+      },
+      {
+      "name": "MYSQL_USER",
+      "label": "MYSQL_USER",
+      "default": "homeserver"            
+      },
+      {
+      "name": "MYSQL_PASSWORD",
+      "label": "MYSQL_PASSWORD",
+      "default": "npm"            
+      }
+    ]
   }
   ]
