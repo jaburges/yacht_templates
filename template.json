@@ -286,24 +286,29 @@
     ],
     "env" : [
       {
-      "name": "MYSQL_ROOT_PASSWORD",
-      "label": "MYSQL_ROOT_PASSWORD",
-      "default": "password"
+      "name": "DB_MYSQL_HOST",
+      "label": "DB_MYSQL_HOST",
+      "default": "MySQL"
       },
       {
-      "name": "MYSQL_DATABASE",
-      "label": "MYSQL_DATABASE",
+      "name": "DB_MYSQL_NAME",
+      "label": "DB_MYSQL_NAME",
       "default": "npm"    
       },
       {
-      "name": "MYSQL_USER",
-      "label": "MYSQL_USER",
+      "name": "DB_MYSQL_USER",
+      "label": "DB_MYSQL_USER",
       "default": "homeserver"            
       },
       {
-      "name": "MYSQL_PASSWORD",
-      "label": "MYSQL_PASSWORD",
+      "name": "DB_MYSQL_PASSWORD",
+      "label": "DB_MYSQL_PASSWORD",
       "default": "npm"            
+      },
+      {
+      "name": "DB_MYSQL_PORT",
+      "label": "DB_MYSQL_PORT",
+      "default": "3306"            
       }
     ]
   },
